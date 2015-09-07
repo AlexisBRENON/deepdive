@@ -716,7 +716,7 @@ trait SQLInferenceRunner extends InferenceRunner with Logging {
         execute(dataStore.analyzeTable(weighttableForThisFactor))
 
         du.unload(s"${outfile}", s"${groundingPath}/${outfile}", dbSettings,
-          s"""SELECT DISTINCT t0.id AS factor_id, t1.id AS weight_id, ${idcols}
+          s"""SELECT t0.id AS factor_id, t1.id AS weight_id, ${idcols}
            FROM ${querytable} t0, ${weighttableForThisFactor} t1
            ${weightJoinCondition};""", groundingDir)
 
